@@ -1,0 +1,19 @@
+XboxController
+leftJoyX	left joystick x	3	SLIDER	x	0	1.0	0.0
+leftJoyY	left joystick y	3	SLIDER	y	0	1.0	0.0
+rightJoyX	right joystick x	3	SLIDER	rx	0	1.0	0.0
+rightJoyY	right joystick y	3	SLIDER	ry	0	1.0	0.0
+leftThumb	button of left joystick	1	BUTTON	Left Thumb 3	0	0.0	0.0
+rightThumb	button of right joystick	1	BUTTON	Right Thumb 3	0	0.0	0.0
+dirCross	Directionnal cross	2	HAT	cooliehat: pov	0	1.0	0.0
+leftSTrig	small trigger on the left	1	BUTTON	Left Thumb	0	0.0	0.0
+leftBTrig	big trigger on the left	3	SLIDER	z	0	1.0	0.0
+rightSTrig	small trigger on the right	1	BUTTON	Right Thumb	0	0.0	0.0
+rightBTrig	big trigger on the left	3	SLIDER	rz	0	1.0	0.0
+aButton	a Button	1	BUTTON	A	0	0.0	0.0
+bButton	b Button	1	BUTTON	B	0	0.0	0.0
+xButton	x Button	1	BUTTON	X	0	0.0	0.0
+yButton	y Button	1	BUTTON	Y	0	0.0	0.0
+startButton	start Button	1	BUTTON	Unknown	0	0.0	0.0
+selectButton	selectButton	1	BUTTON	Select	0	0.0	0.0
+xboxButton	xbox Button	1	BUTTON	Mode	0	0.0	0.0
