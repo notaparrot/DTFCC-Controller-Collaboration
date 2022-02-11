@@ -7,7 +7,9 @@
 void onStartButtonRelease() {
   if (graphicMode == 0) {
     initiateBezierMode = true;
-    graphicMode = 1;
+    listCurves.clear();
+    storeBezier();
+    stored = false;    graphicMode = 1;
   } else if (graphicMode == 1) {
     //store svg drawing and switch to placement mode
     pg = createGraphics(width, height);
@@ -287,10 +289,10 @@ void onxButtonRelease() {
   activeCurvePoints[2].x = roundToGrid(int(activeCurvePoints[2].x));
 
     // paste the generated shape
-  if(graphicMode == 0 && initiatePlacementMode == true){
-    photo.blend(pg, 0, 0, width, height, cursor1x, cursor1y, cursor2x, cursor2y, ADD);
-    initiatePlacementMode = false;
-  }
+  // if(graphicMode == 0 && initiatePlacementMode == true){
+  //   photo.blend(pg, 0, 0, width, height, cursor1x, cursor1y, cursor2x, cursor2y, ADD);
+  //   initiatePlacementMode = false;
+  // }
 }
 void onbButtonRelease() {
   activeCurvePoints[2].x = roundToGrid(int(activeCurvePoints[2].x));
