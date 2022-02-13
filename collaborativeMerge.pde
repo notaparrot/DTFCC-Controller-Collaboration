@@ -119,15 +119,33 @@ void setup() {
 void draw() {
 
     if (graphicMode == 0) {
-        collaborativePhoto();
+        image(photo, 0, 0);
+        photo.resize(width, height);
         if (initiatePlacementMode == true) {
             getUserInputPlacement();
             image(pg, cursor1x, cursor1y, cursor2x, cursor2y);
 
+            //prevent the second cursor to go to a place making the paste impossible
+            if (cursor2x < cursor1x) {
+                cursor2x = cursor1x;
+            }
+            if (cursor2y < cursor1y) {
+                cursor2y = cursor1y;
+            }
+
         } else {
-    getUserInputPhoto();
+            collaborativePhoto();
         }
     } else if (graphicMode == 1) {
         collaborativeBezier();
     }
 }
+
+// void pasteShapeMirror(int blendMode) {
+//     int pasteCornerX = Math.min(cursor1x, cursor2x);
+//     int pasteCornerY = Math.min(cursor1y, cursor2y);
+//     int pasteWidth = Math.max(cursor1x, cursor2x);
+//     int pasteHeight = Math.max(cursor1y, cursor2y);
+
+//     photo.blend(pg, 0, 0, width, height, pasteCornerX, pasteCornerY, pasteWidth, pasteHeight, blendMode);
+// }

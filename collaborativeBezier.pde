@@ -22,7 +22,7 @@ void collaborativeBezier() {
 }
 
 void drawBackground() {
-  background(0, 0, 98);
+  background(0, 0, 98, 120);
   strokeWeight(2);
   stroke(20);
   strokeCap(ROUND);

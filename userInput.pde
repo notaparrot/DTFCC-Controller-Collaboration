@@ -13,28 +13,35 @@ void onStartButtonRelease() {
   } else if (graphicMode == 1) {
     //store svg drawing and switch to placement mode
     pg = createGraphics(width, height);
+    pg.smooth(8);
     pg.beginDraw();
+    if (isCapRound == false)
+    {
+      pg.strokeCap(SQUARE);
+
+    } else {
+      pg.strokeCap(ROUND);
+    }
     pg.colorMode(HSB, 100, 100, 100, 255);
     pg.strokeWeight(lineStrokeWeight);
     pg.stroke(colorWheelH, colorWheelS, 80);
     pg.noFill();
     //pg.background(0, 0, 0, 0);
-
     for (int i = 0; i < listCurves.size(); i++) {
-
-
       pg.beginShape();
-
       listCurves.get(i).transferPg(pg);
       pg.endShape();
-
     }
     pg.endDraw();
 
     // initiatePhotoMode = true;
     initiatePlacementMode = true;
     graphicMode = 0;
-
+    //move cursor in an appropriate place to paste the shape
+    cursor1x = 0;
+    cursor1y = 0;
+    cursor2x = width;
+    cursor2y = height;    
   }
 }
 
@@ -278,8 +285,14 @@ void onaButtonRelease() {
 
 //paste the generated shape
 if(graphicMode == 0 && initiatePlacementMode == true){
+  //pasteShapeMirror(LIGHTEST);
     photo.blend(pg, 0, 0, width, height, cursor1x, cursor1y, cursor2x, cursor2y, LIGHTEST);
     initiatePlacementMode = false;
+
+    cursor1x = width/2 - 5;
+    cursor1y = height/2 - 5;
+    cursor2x = width/2 + 5;
+    cursor2y = height/2 + 5;
   }
 }
 void onyButtonRelease() {
@@ -299,6 +312,7 @@ void onbButtonRelease() {
 
   // paste the generated shape
   if(graphicMode == 0 && initiatePlacementMode == true){
+    //pasteShapeMirror(DARKEST);
     photo.blend(pg, 0, 0, width, height, cursor1x, cursor1y, cursor2x, cursor2y, DARKEST);
     initiatePlacementMode = false;
   }

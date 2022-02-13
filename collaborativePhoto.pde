@@ -1,7 +1,5 @@
 void collaborativePhoto() {
-    image(photo, 0, 0);
-    photo.resize(width, height);
-
+    getUserInputPhoto();
     triggerCursors();
     drawCursors();
 
@@ -44,9 +42,6 @@ void copyProcess() {
         sourceHeight = Math.max(cursor1y, cursor2y) - sourceTopY;
 
         initiateCopy = false;
-
-        //mirror
-        // angleCopy = degrees(new PVector(cursor1x - cursor2x, cursor1y - cursor2y).heading());
     }
 
     stroke(playerPalette[1]);
@@ -57,9 +52,6 @@ void copyProcess() {
     int pasteWidth = Math.max(cursor1x, cursor2x) - pasteCornerX;
     int pasteHeight = Math.max(cursor1y, cursor2y) - pasteCornerY;
     copy(photo,sourceTopX, sourceTopY, sourceWidth, sourceHeight, pasteCornerX, pasteCornerY, pasteWidth, pasteHeight);
-
-    // copy(photo, sx, sy, sw, sh, cursor1x, cursor1y, cursor2x - cursor1x, cursor2y - cursor1y);
-
 }
 
 void pasteProcess() {
