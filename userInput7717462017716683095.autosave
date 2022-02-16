@@ -42,15 +42,6 @@ void onStartButtonRelease() {
     cursor1y = 0;
     cursor2x = width;
     cursor2y = height;
-  } else if (graphicMode == 2) {
-    initiateTextPlacement = true;
-    graphicMode = 0;
-    //move cursor in an appropriate place to paste the shape
-    cursor1x = 0;
-    cursor1y = 0;
-    cursor2x = width;
-    cursor2y = height;
-
   }
 }
 
@@ -99,10 +90,6 @@ void onSelectButtonRelease() {
     } else {
       textMode = 0;
     }
-  }
-
-  if (graphicMode == 0) {
-    graphicMode = 2;
   }
 }
 
@@ -313,12 +300,6 @@ void onaButtonRelease() {
     cursor1y = height / 2 - 5;
     cursor2x = width / 2 + 5;
     cursor2y = height / 2 + 5;
-
-    //odd bug workaround
-    paste = false;
-  } else if (graphicMode == 0 && initiateTextPlacement == true) {
-pastingTextL = true;
-
   } else if (graphicMode == 2) {
     showGrid = !showGrid;
   }
@@ -355,17 +336,12 @@ void onbButtonRelease() {
     photo.blend(pg, 0, 0, width, height, cursor1x, cursor1y, cursor2x, cursor2y, DARKEST);
     initiatePlacementMode = false;
 
-    cursor1x = width / 2 - 5;
+        cursor1x = width / 2 - 5;
     cursor1y = height / 2 - 5;
     cursor2x = width / 2 + 5;
     cursor2y = height / 2 + 5;
-    //odd bug workaround
-    paste = false;
   } else if (graphicMode == 2) {
     showFontGhost = !showFontGhost;
-  } else if (graphicMode == 0 && initiateTextPlacement == true) {
-pastingTextD = true;
-
   }
 }
 

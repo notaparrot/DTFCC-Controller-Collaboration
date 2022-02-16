@@ -1,6 +1,12 @@
 # DTFCC-Controller-Collaboration
 
-A collaborative tool for graphic design using a video game controller.
-This is obviously a work in progress.
+A collaborative tool for graphic design using video game controllers.
 
-Find Gulax and many cool open source fonts at [velvetyne.fr](https://www.velvetyne.fr/).
+Find the fonts used fonts at [velvetyne.fr](https://www.velvetyne.fr/).
+1. [Gulax](https://velvetyne.fr/fonts/gulax/)
+1. [Anthony](https://www.velvetyne.fr/fonts/anthony/)
+1. [PicNic](https://velvetyne.fr/fonts/picnic/)
+1. [Lment](https://velvetyne.fr/fonts/lment/)
+1. [Solide Mirage](https://velvetyne.fr/fonts/solide-mirage/)
+
+The featured font editor is based on the work of [Tim Rodenbroeker](https://timrodenbroeker.de/processing-tutorial-kinetic-typography-1/).

@@ -48,6 +48,26 @@ boolean stored;
 ArrayList < Curve > listCurves = new ArrayList < Curve > ();
 
 //////////////////////////////////////////////////////////////////////
+//Font setup//
+//////////////////////////////////////////////////////////////////////
+
+PFont[] fonts = new PFont[5];
+StringList lines = new StringList();
+String initialText = new String();
+int textInputSize = 128;
+float textCursor = 0;
+PGraphics textImg;
+int textMode = 0;
+float tilesX = 8;
+float tilesY = 8;
+boolean showGrid, showFontGhost;
+PGraphics textExport;
+int textDeformMode = 0;
+int waveStrength = 10;
+float sinPhase = 0.01;
+int fontSelector = 0;
+
+//////////////////////////////////////////////////////////////////////
 //Mode setup//
 //////////////////////////////////////////////////////////////////////
 
@@ -55,7 +75,12 @@ int graphicMode = 0;
 boolean initiatePhotoMode = false;
 boolean initiateBezierMode = false;
 boolean initiatePlacementMode = false;
+boolean initiateTextPlacement = false;
 PGraphics pg;
+PGraphics textBuffer;
+boolean pastingTextD = false;
+boolean pastingTextL = false;
+
 
 //////////////////////////////////////////////////////////////////////
 // setup //
@@ -87,11 +112,12 @@ void setup() {
     xboxController.getButton("selectButton").plug(this, "onSelectButtonRelease", ControlIO.ON_RELEASE);
 
 
-    size(600, 600);
+    size(600, 600, P2D);
     // fullScreen();
 
     //PHOTO style setup
     photo = loadImage("1.JPG");
+    photo.resize(width, height);
     cursor1x = width / 2;
     cursor1y = height / 2;
     cursor2x = width / 2;
@@ -114,16 +140,29 @@ void setup() {
     //initiate the first curve
     storeBezier();
     stored = false;
+
+    //FONT style setup
+    fonts[0] = createFont("Gulax-Regular.otf", height, true);
+    fonts[1] = createFont("Anthony.otf", height, true);
+    fonts[2] = createFont("PicNic-Regular.otf", height, true);
+    fonts[3] = createFont("Lment-v02.otf", height, true);
+    fonts[4] = createFont("SolideMirage-Etroit.otf", height, true);
+    textFont(fonts[fontSelector]);
+    lines.append("");
+    textImg = createGraphics(width, height, P2D);
+    textImg.smooth(8);
+    textExport = createGraphics(width, height, P2D);
+    textExport.smooth(8);
 }
 
 void draw() {
 
     if (graphicMode == 0) {
         image(photo, 0, 0);
-        photo.resize(width, height);
-        if (initiatePlacementMode == true) {
+        if (initiatePlacementMode == false && initiateTextPlacement == false) {
+            collaborativePhoto();
+        } else if (initiatePlacementMode == true) {
             getUserInputPlacement();
-            image(pg, cursor1x, cursor1y, cursor2x, cursor2y);
 
             //prevent the second cursor to go to a place making the paste impossible
             if (cursor2x < cursor1x) {
@@ -132,20 +171,39 @@ void draw() {
             if (cursor2y < cursor1y) {
                 cursor2y = cursor1y;
             }
+            image(pg, cursor1x, cursor1y, cursor2x, cursor2y);
+        } else if (initiateTextPlacement = true) {
+            // Initialise textbuffer  + copy code for placement of text.
+            getUserInputPlacement();
+            if (cursor2x < cursor1x) {
+                cursor2x = cursor1x;
+            }
+            if (cursor2y < cursor1y) {
+                cursor2y = cursor1y;
+            }
+            image(textExport, cursor1x, cursor1y, cursor2x, cursor2y);
 
-        } else {
-            collaborativePhoto();
+            if (pastingTextD == true) {
+                photo.blend(textExport, 0, 0, width, height, cursor1x, cursor1y, cursor2x, cursor2y, DARKEST);
+                initiateTextPlacement = false;
+                cursor1x = width / 2 - 5;
+                cursor1y = height / 2 - 5;
+                cursor2x = width / 2 + 5;
+                cursor2y = height / 2 + 5;
+                pastingTextD = false;
+            } else if (pastingTextL){
+                photo.blend(textExport, 0, 0, width, height, cursor1x, cursor1y, cursor2x, cursor2y, LIGHTEST);
+                initiateTextPlacement = false;
+                cursor1x = width / 2 - 5;
+                cursor1y = height / 2 - 5;
+                cursor2x = width / 2 + 5;
+                cursor2y = height / 2 + 5;
+                pastingTextL = false;
+            }
         }
     } else if (graphicMode == 1) {
         collaborativeBezier();
+    } else if (graphicMode == 2) {
+        collaborativeFont();
     }
 }
-
-// void pasteShapeMirror(int blendMode) {
-//     int pasteCornerX = Math.min(cursor1x, cursor2x);
-//     int pasteCornerY = Math.min(cursor1y, cursor2y);
-//     int pasteWidth = Math.max(cursor1x, cursor2x);
-//     int pasteHeight = Math.max(cursor1y, cursor2y);
-
-//     photo.blend(pg, 0, 0, width, height, pasteCornerX, pasteCornerY, pasteWidth, pasteHeight, blendMode);
-// }

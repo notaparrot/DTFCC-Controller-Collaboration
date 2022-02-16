@@ -36,46 +36,6 @@ void drawBackground() {
   }
 }
 
-
-// void countdown() {
-//   fill(20);
-
-//   if (millis() - time >= wait) {
-
-//     //show countdown
-//     if (counting > 0) {
-//       counting--;
-//     }
-
-//     //show time over)
-//     if (counting <= 0) {
-//       counting--;
-//       isCounting = false;
-
-//       if (stored == false) {
-//         storeBezier();
-//       }
-//     }
-
-//     if (counting < -3) {
-//       counting = 10;
-//       isCounting = true;
-//       stored = false;
-//     }
-
-//     time = millis(); //also update the stored time
-//   }
-
-//   if (isCounting == true) {
-//     text(str(counting), 50, 50);
-//   }
-//   if (isCounting == false) {
-//     text("TIME OVER", 50, 50);
-//   }
-
-//   noFill();
-// }
-
 void storeBezier() {
   listCurves.add(new Curve());
   stored = true;
