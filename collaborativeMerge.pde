@@ -37,12 +37,6 @@ boolean isCapRound = true;
 //drawBezier values
 PVector[] activeCurvePoints = new PVector[4];
 
-//countdown values
-// int time;
-// int wait = 1000;
-// int counting = 10;
-// boolean isCounting = true;
-
 //storeBezier value
 boolean stored;
 ArrayList < Curve > listCurves = new ArrayList < Curve > ();
@@ -113,7 +107,7 @@ void setup() {
 
 
     size(600, 600, P2D);
-    // fullScreen();
+    fullScreen();
 
     //PHOTO style setup
     photo = loadImage("1.JPG");
@@ -172,7 +166,7 @@ void draw() {
                 cursor2y = cursor1y;
             }
             image(pg, cursor1x, cursor1y, cursor2x, cursor2y);
-        } else if (initiateTextPlacement = true) {
+        } else if (initiateTextPlacement == true) {
             // Initialise textbuffer  + copy code for placement of text.
             getUserInputPlacement();
             if (cursor2x < cursor1x) {
@@ -191,6 +185,7 @@ void draw() {
                 cursor2x = width / 2 + 5;
                 cursor2y = height / 2 + 5;
                 pastingTextD = false;
+                paste = false;
             } else if (pastingTextL){
                 photo.blend(textExport, 0, 0, width, height, cursor1x, cursor1y, cursor2x, cursor2y, LIGHTEST);
                 initiateTextPlacement = false;
@@ -199,6 +194,7 @@ void draw() {
                 cursor2x = width / 2 + 5;
                 cursor2y = height / 2 + 5;
                 pastingTextL = false;
+                paste = false;
             }
         }
     } else if (graphicMode == 1) {
