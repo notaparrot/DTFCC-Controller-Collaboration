@@ -11,6 +11,7 @@ void onStartButtonRelease() {
     storeBezier();
     stored = false;
     graphicMode = 1;
+    initiateTextPlacement = false;
   } else if (graphicMode == 1) {
     //store svg drawing and switch to placement mode
     pg = createGraphics(width, height);
@@ -102,6 +103,7 @@ void onSelectButtonRelease() {
   }
 
   if (graphicMode == 0) {
+    initiatePlacementMode = false;
     graphicMode = 2;
   }
 }

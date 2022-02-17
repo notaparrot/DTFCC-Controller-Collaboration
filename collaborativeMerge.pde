@@ -92,7 +92,7 @@ void setup() {
 
     // Find a joystick that matches the configuration file. To match with any 
     // connected device remove the call to filter.
-    xboxController = control.getMatchedDevice("Default");
+    xboxController = control.getMatchedDevice("Xbox360");
     if (xboxController == null) {
         println("No suitable device configured");
         System.exit(-1); // End the program NOW!
