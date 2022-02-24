@@ -1,4 +1,6 @@
-# DTFCC-Controller-Collaboration
+# Graphic Jam
+
+More pictures on [saksik.net](https://saksik.net/dtcc.html).
 
 A collaborative tool for graphic design using video game controllers.
 

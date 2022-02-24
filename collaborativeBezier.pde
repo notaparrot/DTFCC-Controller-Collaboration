@@ -1,14 +1,12 @@
 void collaborativeBezier() {
   drawBackground();
-  //dessine toute les courbes
+  //draw all curves
   for (int i = 0; i < listCurves.size(); i++) {
     listCurves.get(i).drawCurve();
-    // println(i);
   }
 
-  // if (isCounting == true) {
   getUserInputBezier();
-  // No flipping clue why we need to declare the following 4 vectors, but if we don't, lines stack on top of each others
+  // No clue why we need to declare the following 4 vectors, but if we don't, lines stack on top of each others
   PVector movedPoint0 = new PVector(activeCurvePoints[0].x, activeCurvePoints[0].y);
   PVector movedPoint1 = new PVector(activeCurvePoints[1].x, activeCurvePoints[1].y);
   PVector movedPoint2 = new PVector(activeCurvePoints[2].x, activeCurvePoints[2].y);
@@ -17,8 +15,6 @@ void collaborativeBezier() {
 
   listCurves.get(listCurves.size() - 1).move(movedPoint0, movedPoint1, movedPoint2, movedPoint3);
   listCurves.get(listCurves.size() - 1).drawPlayer();
-  // }
-  // countdown();
 }
 
 void drawBackground() {

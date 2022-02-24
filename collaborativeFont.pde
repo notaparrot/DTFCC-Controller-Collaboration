@@ -35,7 +35,6 @@ void textToTiles() {
   textImg.text(initialText, width / 6, height / 4);
   textImg.endDraw();
 
-  // image(textImg, 0, 0);
   textExport.beginDraw();
   textExport.noStroke();
   textExport.colorMode(HSB, 100, 100, 100, 255);
@@ -50,7 +49,6 @@ void textToTiles() {
     textExport.text(initialText, width / 6, height / 4);
     textExport.fill(colorWheelH, colorWheelS, 80);
 
-    println("showing font ghost");
   }
 
   int tileW = int(width / tilesX);

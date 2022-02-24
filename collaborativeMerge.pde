@@ -107,10 +107,10 @@ void setup() {
 
 
     size(600, 600, P2D);
-    fullScreen();
+//fullScreen();
 
     //PHOTO style setup
-    photo = loadImage("1.JPG");
+    photo = loadImage("fac1.JPG");
     photo.resize(width, height);
     cursor1x = width / 2;
     cursor1y = height / 2;
