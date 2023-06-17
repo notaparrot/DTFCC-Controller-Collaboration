@@ -59,31 +59,31 @@ void getUserInputPlacement() {
   float cursorSpeed = 7.5;
 
   //left joystick
-  if (xboxController.getSlider("leftJoyX").getValue() > 0.2) {
-    cursor1x += abs(xboxController.getSlider("leftJoyX").getValue()) * cursorSpeed;
+  if (xboxController.getSlider("lsx").getValue() > 0.2) {
+    cursor1x += abs(xboxController.getSlider("lsx").getValue()) * cursorSpeed;
   }
-  if (xboxController.getSlider("leftJoyX").getValue() < -0.2) {
-    cursor1x -= abs(xboxController.getSlider("leftJoyX").getValue()) * cursorSpeed;
+  if (xboxController.getSlider("lsx").getValue() < -0.2) {
+    cursor1x -= abs(xboxController.getSlider("lsx").getValue()) * cursorSpeed;
   }
-  if (xboxController.getSlider("leftJoyY").getValue() > 0.2) {
-    cursor1y += abs(xboxController.getSlider("leftJoyY").getValue()) * cursorSpeed;
+  if (xboxController.getSlider("lsy").getValue() > 0.2) {
+    cursor1y += abs(xboxController.getSlider("lsy").getValue()) * cursorSpeed;
   }
-  if (xboxController.getSlider("leftJoyY").getValue() < -0.2) {
-    cursor1y -= abs(xboxController.getSlider("leftJoyY").getValue()) * cursorSpeed;
+  if (xboxController.getSlider("lsy").getValue() < -0.2) {
+    cursor1y -= abs(xboxController.getSlider("lsy").getValue()) * cursorSpeed;
   }
 
   //right joystick
-  if (xboxController.getSlider("rightJoyX").getValue() > 0.2) {
-    cursor2x += abs(xboxController.getSlider("rightJoyX").getValue()) * cursorSpeed;
+  if (xboxController.getSlider("rsx").getValue() > 0.2) {
+    cursor2x += abs(xboxController.getSlider("rsx").getValue()) * cursorSpeed;
   }
-  if (xboxController.getSlider("rightJoyX").getValue() < -0.2) {
-    cursor2x -= abs(xboxController.getSlider("rightJoyX").getValue()) * cursorSpeed;
+  if (xboxController.getSlider("rsx").getValue() < -0.2) {
+    cursor2x -= abs(xboxController.getSlider("rsx").getValue()) * cursorSpeed;
   }
-  if (xboxController.getSlider("rightJoyY").getValue() > 0.2) {
-    cursor2y += abs(xboxController.getSlider("rightJoyY").getValue()) * cursorSpeed;
+  if (xboxController.getSlider("rsy").getValue() > 0.2) {
+    cursor2y += abs(xboxController.getSlider("rsy").getValue()) * cursorSpeed;
   }
-  if (xboxController.getSlider("rightJoyY").getValue() < -0.2) {
-    cursor2y -= abs(xboxController.getSlider("rightJoyY").getValue()) * cursorSpeed;
+  if (xboxController.getSlider("rsy").getValue() < -0.2) {
+    cursor2y -= abs(xboxController.getSlider("rsy").getValue()) * cursorSpeed;
   }
 }
 
@@ -118,31 +118,31 @@ public void getUserInputPhoto() {
   float cursorSpeed = 7.5;
 
   //left joystick
-  if (xboxController.getSlider("leftJoyX").getValue() > 0.2) {
-    cursor1x += abs(xboxController.getSlider("leftJoyX").getValue()) * cursorSpeed;
+  if (xboxController.getSlider("lsx").getValue() > 0.2) {
+    cursor1x += abs(xboxController.getSlider("lsx").getValue()) * cursorSpeed;
   }
-  if (xboxController.getSlider("leftJoyX").getValue() < -0.2) {
-    cursor1x -= abs(xboxController.getSlider("leftJoyX").getValue()) * cursorSpeed;
+  if (xboxController.getSlider("lsx").getValue() < -0.2) {
+    cursor1x -= abs(xboxController.getSlider("lsx").getValue()) * cursorSpeed;
   }
-  if (xboxController.getSlider("leftJoyY").getValue() > 0.2) {
-    cursor1y += abs(xboxController.getSlider("leftJoyY").getValue()) * cursorSpeed;
+  if (xboxController.getSlider("lsy").getValue() > 0.2) {
+    cursor1y += abs(xboxController.getSlider("lsy").getValue()) * cursorSpeed;
   }
-  if (xboxController.getSlider("leftJoyY").getValue() < -0.2) {
-    cursor1y -= abs(xboxController.getSlider("leftJoyY").getValue()) * cursorSpeed;
+  if (xboxController.getSlider("lsy").getValue() < -0.2) {
+    cursor1y -= abs(xboxController.getSlider("lsy").getValue()) * cursorSpeed;
   }
 
   //right joystick
-  if (xboxController.getSlider("rightJoyX").getValue() > 0.2) {
-    cursor2x += abs(xboxController.getSlider("rightJoyX").getValue()) * cursorSpeed;
+  if (xboxController.getSlider("rsx").getValue() > 0.2) {
+    cursor2x += abs(xboxController.getSlider("rsx").getValue()) * cursorSpeed;
   }
-  if (xboxController.getSlider("rightJoyX").getValue() < -0.2) {
-    cursor2x -= abs(xboxController.getSlider("rightJoyX").getValue()) * cursorSpeed;
+  if (xboxController.getSlider("rsx").getValue() < -0.2) {
+    cursor2x -= abs(xboxController.getSlider("rsx").getValue()) * cursorSpeed;
   }
-  if (xboxController.getSlider("rightJoyY").getValue() > 0.2) {
-    cursor2y += abs(xboxController.getSlider("rightJoyY").getValue()) * cursorSpeed;
+  if (xboxController.getSlider("rsy").getValue() > 0.2) {
+    cursor2y += abs(xboxController.getSlider("rsy").getValue()) * cursorSpeed;
   }
-  if (xboxController.getSlider("rightJoyY").getValue() < -0.2) {
-    cursor2y -= abs(xboxController.getSlider("rightJoyY").getValue()) * cursorSpeed;
+  if (xboxController.getSlider("rsy").getValue() < -0.2) {
+    cursor2y -= abs(xboxController.getSlider("rsy").getValue()) * cursorSpeed;
   }
 
   //prevent cursors from going offscreen
@@ -153,20 +153,20 @@ public void getUserInputPhoto() {
 }
 
 void triggerCursors() {
-  if (xboxController.getButton("leftSTrig").pressed()) {
+  if (xboxController.getButton("lb").pressed()) {
     isCursor1triggered = true;
   }
-  if (xboxController.getButton("rightSTrig").pressed()) {
+  if (xboxController.getButton("rb").pressed()) {
     isCursor2triggered = true;
   }
 }
 
-void onLeftSTrigRelease() {
+void onlbRelease() {
   isCursor1triggered = false;
   paste = true;
 }
 
-void onRightSTrigRelease() {
+void onrbRelease() {
   isCursor2triggered = false;
   paste = true;
 }
@@ -181,86 +181,86 @@ public void getUserInputBezier() {
   int cursorSpeed = 3;
 
   //left joystick
-  if (xboxController.getSlider("leftJoyX").getValue() > 0.5) {
+  if (xboxController.getSlider("lsx").getValue() > 0.5) {
     activeCurvePoints[0].x += cursorSpeed;
   }
-  if (xboxController.getSlider("leftJoyX").getValue() < -0.5) {
+  if (xboxController.getSlider("lsx").getValue() < -0.5) {
     activeCurvePoints[0].x -= cursorSpeed;
   }
-  if (xboxController.getSlider("leftJoyY").getValue() > 0.5) {
+  if (xboxController.getSlider("lsy").getValue() > 0.5) {
     activeCurvePoints[0].y += cursorSpeed;
   }
-  if (xboxController.getSlider("leftJoyY").getValue() < -0.5) {
+  if (xboxController.getSlider("lsy").getValue() < -0.5) {
     activeCurvePoints[0].y -= cursorSpeed;
   }
 
   //right joystick
-  if (xboxController.getSlider("rightJoyX").getValue() > 0.5) {
+  if (xboxController.getSlider("rsx").getValue() > 0.5) {
     activeCurvePoints[3].x += cursorSpeed;
   }
-  if (xboxController.getSlider("rightJoyX").getValue() < -0.5) {
+  if (xboxController.getSlider("rsx").getValue() < -0.5) {
     activeCurvePoints[3].x -= cursorSpeed;
   }
-  if (xboxController.getSlider("rightJoyY").getValue() > 0.5) {
+  if (xboxController.getSlider("rsy").getValue() > 0.5) {
     activeCurvePoints[3].y += cursorSpeed;
   }
-  if (xboxController.getSlider("rightJoyY").getValue() < -0.5) {
+  if (xboxController.getSlider("rsy").getValue() < -0.5) {
     activeCurvePoints[3].y -= cursorSpeed;
   }
 
   //directional cross 
 
-  if (xboxController.getHat("dirCross").left()) {
+  if (xboxController.getHat("dpad").left()) {
     activeCurvePoints[1].x -= cursorSpeed;
   }
-  if (xboxController.getHat("dirCross").right()) {
+  if (xboxController.getHat("dpad").right()) {
     activeCurvePoints[1].x += cursorSpeed;
   }
-  if (xboxController.getHat("dirCross").up()) {
+  if (xboxController.getHat("dpad").up()) {
     activeCurvePoints[1].y -= cursorSpeed;
   }
-  if (xboxController.getHat("dirCross").down()) {
+  if (xboxController.getHat("dpad").down()) {
     activeCurvePoints[1].y += cursorSpeed;
   }
   //right buttons
 
-  if (xboxController.getButton("aButton").pressed()) {
+  if (xboxController.getButton("a").pressed()) {
     activeCurvePoints[2].y += cursorSpeed;
   }
 
-  if (xboxController.getButton("yButton").pressed()) {
+  if (xboxController.getButton("y").pressed()) {
     activeCurvePoints[2].y -= cursorSpeed;
   }
 
-  if (xboxController.getButton("xButton").pressed()) {
+  if (xboxController.getButton("x").pressed()) {
     activeCurvePoints[2].x -= cursorSpeed;
   }
 
-  if (xboxController.getButton("bButton").pressed()) {
+  if (xboxController.getButton("b").pressed()) {
     activeCurvePoints[2].x += cursorSpeed;
   }
 
 
   // round position of cursor mapped to joysticks
   ////left joystick
-  if (xboxController.getSlider("leftJoyX").getValue() < 0.5 && xboxController.getSlider("leftJoyX").getValue() > -0.5) {
+  if (xboxController.getSlider("lsx").getValue() < 0.5 && xboxController.getSlider("lsx").getValue() > -0.5) {
     activeCurvePoints[0].x = roundToGrid(int(activeCurvePoints[0].x));
   }
-  if (xboxController.getSlider("leftJoyY").getValue() < 0.5 && xboxController.getSlider("leftJoyY").getValue() > -0.5) {
+  if (xboxController.getSlider("lsy").getValue() < 0.5 && xboxController.getSlider("lsy").getValue() > -0.5) {
     activeCurvePoints[0].y = roundToGrid(int(activeCurvePoints[0].y));
   }
   ////right joystick
-  if (xboxController.getSlider("rightJoyX").getValue() < 0.5 && xboxController.getSlider("rightJoyX").getValue() > -0.5) {
+  if (xboxController.getSlider("rsx").getValue() < 0.5 && xboxController.getSlider("rsx").getValue() > -0.5) {
     activeCurvePoints[3].x = roundToGrid(int(activeCurvePoints[3].x));
   }
-  if (xboxController.getSlider("rightJoyY").getValue() < 0.5 && xboxController.getSlider("rightJoyY").getValue() > -0.5) {
+  if (xboxController.getSlider("rsy").getValue() < 0.5 && xboxController.getSlider("rsy").getValue() > -0.5) {
     activeCurvePoints[3].y = roundToGrid(int(activeCurvePoints[3].y));
   }
   ////directional cross
-  if (xboxController.getHat("dirCross").left() == false && xboxController.getHat("dirCross").right() == false) {
+  if (xboxController.getHat("dpad").left() == false && xboxController.getHat("dpad").right() == false) {
     activeCurvePoints[1].x = roundToGrid(int(activeCurvePoints[1].x));
   }
-  if (xboxController.getHat("dirCross").up() == false && xboxController.getHat("dirCross").down() == false) {
+  if (xboxController.getHat("dpad").up() == false && xboxController.getHat("dpad").down() == false) {
     activeCurvePoints[1].y = roundToGrid(int(activeCurvePoints[1].y));
   }
 
@@ -275,10 +275,10 @@ public void getUserInputBezier() {
   activeCurvePoints[3].y = constrain(activeCurvePoints[3].y, 0, height);
 
   //change line strokeWeight
-  if (xboxController.getButton("rightSTrig").pressed()) {
+  if (xboxController.getButton("rb").pressed()) {
     lineStrokeWeight += 1;
   }
-  if (xboxController.getButton("leftSTrig").pressed()) {
+  if (xboxController.getButton("lb").pressed()) {
     lineStrokeWeight -= 1;
     if (lineStrokeWeight < 1) {
       lineStrokeWeight = 1;
@@ -286,13 +286,13 @@ public void getUserInputBezier() {
   }
 
   //change color
-  if (xboxController.getSlider("rightBTrig").getValue() > 0.5) {
+  if (xboxController.getSlider("lrt").getValue() > 0.2) {
     colorWheelH += 1;
     if (colorWheelH >= 100) {
       colorWheelH = 0;
     }
   }
-  if (xboxController.getSlider("leftBTrig").getValue() > 0.5) {
+  if (xboxController.getSlider("lrt").getValue() < -0.2) {
     colorWheelS += 1;
     if (colorWheelS >= 100) {
       colorWheelS = 0;
@@ -387,12 +387,12 @@ void onrightThumbRelease() {
 
 void getFontInput() {
 
-  if (xboxController.getButton("rightSTrig").pressed()) {
+  if (xboxController.getButton("rb").pressed()) {
     textInputSize += 1;
     textCursor = textWidth(lines.get(lines.size() - 1));
 
   }
-  if (xboxController.getButton("leftSTrig").pressed()) {
+  if (xboxController.getButton("lb").pressed()) {
     textInputSize -= 1;
     textCursor = textWidth(lines.get(lines.size() - 1));
 
@@ -401,40 +401,40 @@ void getFontInput() {
     }
   }
   //right joystick
-  if (xboxController.getSlider("rightJoyX").getValue() > 0.2) {
+  if (xboxController.getSlider("rsx").getValue() > 0.2) {
     tilesX -= 0.1;
     if (tilesX < 4) {
       tilesX = 4;
     }
   }
-  if (xboxController.getSlider("rightJoyX").getValue() < -0.2) {
+  if (xboxController.getSlider("rsx").getValue() < -0.2) {
     tilesX += 0.1;
 
   }
-  if (xboxController.getSlider("rightJoyY").getValue() > 0.2) {
+  if (xboxController.getSlider("rsy").getValue() > 0.2) {
     tilesY -= 0.1;
     if (tilesY < 4) {
       tilesY = 4;
     }
   }
-  if (xboxController.getSlider("rightJoyY").getValue() < -0.2) {
+  if (xboxController.getSlider("rsy").getValue() < -0.2) {
     tilesY += 0.1;
   }
 
   //    //left joystick
-  if (xboxController.getSlider("leftJoyX").getValue() > 0.2) {
+  if (xboxController.getSlider("lsx").getValue() > 0.2) {
     waveStrength += 1;
   }
-  if (xboxController.getSlider("leftJoyX").getValue() < -0.2) {
+  if (xboxController.getSlider("lsx").getValue() < -0.2) {
     waveStrength -= 1;
     if (waveStrength < 5) {
       waveStrength = 5;
     }
   }
-  if (xboxController.getSlider("leftJoyY").getValue() > 0.2) {
+  if (xboxController.getSlider("lsy").getValue() > 0.2) {
     sinPhase += 0.01;
   }
-  if (xboxController.getSlider("leftJoyY").getValue() < -0.2) {
+  if (xboxController.getSlider("lsy").getValue() < -0.2) {
     sinPhase -= 0.01;
     if (sinPhase < 0.1) {
       sinPhase = 0.1;
@@ -443,13 +443,13 @@ void getFontInput() {
 
 
   //triggers
-  if (xboxController.getSlider("rightBTrig").getValue() > 0.5) {
+  if (xboxController.getSlider("lrt").getValue() > 0.2) {
     colorWheelH += 1;
     if (colorWheelH >= 100) {
       colorWheelH = 0;
     }
   }
-  if (xboxController.getSlider("leftBTrig").getValue() > 0.5) {
+  if (xboxController.getSlider("lrt").getValue() < -0.2) {
     colorWheelS += 1;
     if (colorWheelS >= 100) {
       colorWheelS = 0;

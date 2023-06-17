@@ -93,24 +93,24 @@ void setup() {
     }
 
     //general setup functions
-    xboxController.getButton("startButton").plug(this, "onStartButtonRelease", ControlIO.ON_RELEASE);
+    xboxController.getButton("start").plug(this, "onStartButtonRelease", ControlIO.ON_RELEASE);
     //Setup functions for PHOTO MODE
-    xboxController.getButton("leftSTrig").plug(this, "onLeftSTrigRelease", ControlIO.ON_RELEASE);
-    xboxController.getButton("rightSTrig").plug(this, "onRightSTrigRelease", ControlIO.ON_RELEASE);
+    xboxController.getButton("lb").plug(this, "onlbRelease", ControlIO.ON_RELEASE);
+    xboxController.getButton("rb").plug(this, "onrbRelease", ControlIO.ON_RELEASE);
     //Setup functions BEZIER MODE
-    xboxController.getButton("aButton").plug(this, "onaButtonRelease", ControlIO.ON_RELEASE);
-    xboxController.getButton("bButton").plug(this, "onbButtonRelease", ControlIO.ON_RELEASE);
-    xboxController.getButton("xButton").plug(this, "onxButtonRelease", ControlIO.ON_RELEASE);
-    xboxController.getButton("yButton").plug(this, "onyButtonRelease", ControlIO.ON_RELEASE);
-    xboxController.getButton("rightThumb").plug(this, "onrightThumbRelease", ControlIO.ON_RELEASE);
-    xboxController.getButton("selectButton").plug(this, "onSelectButtonRelease", ControlIO.ON_RELEASE);
+    xboxController.getButton("a").plug(this, "onaButtonRelease", ControlIO.ON_RELEASE);
+    xboxController.getButton("b").plug(this, "onbButtonRelease", ControlIO.ON_RELEASE);
+    xboxController.getButton("x").plug(this, "onxButtonRelease", ControlIO.ON_RELEASE);
+    xboxController.getButton("y").plug(this, "onyButtonRelease", ControlIO.ON_RELEASE);
+    xboxController.getButton("rsb").plug(this, "onrightThumbRelease", ControlIO.ON_RELEASE);
+    xboxController.getButton("back").plug(this, "onSelectButtonRelease", ControlIO.ON_RELEASE);
 
 
     size(600, 600, P2D);
 //fullScreen();
 
     //PHOTO style setup
-    photo = loadImage("fac1.JPG");
+    photo = loadImage("1.JPG");
     photo.resize(width, height);
     cursor1x = width / 2;
     cursor1y = height / 2;
