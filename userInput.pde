@@ -5,14 +5,14 @@
 //Switch to different mode
 
 void onStartButtonRelease() {
-  if (graphicMode == 0) {
+  if (graphicMode == State.PHOTO) {
     initiateBezierMode = true;
     listCurves.clear();
     storeBezier();
     stored = false;
-    graphicMode = 1;
+    graphicMode = State.BEZIER;
     initiateTextPlacement = false;
-  } else if (graphicMode == 1) {
+  } else if (graphicMode == State.BEZIER) {
     //store svg drawing and switch to placement mode
     pg = createGraphics(width, height);
     pg.smooth(8);
@@ -37,15 +37,15 @@ void onStartButtonRelease() {
 
     // initiatePhotoMode = true;
     initiatePlacementMode = true;
-    graphicMode = 0;
+    graphicMode = State.FONT;
     //move cursor in an appropriate place to paste the shape
     cursor1x = 0;
     cursor1y = 0;
     cursor2x = width;
     cursor2y = height;
-  } else if (graphicMode == 2) {
+  } else if (graphicMode == State.FONT) {
     initiateTextPlacement = true;
-    graphicMode = 0;
+    graphicMode = State.PHOTO;
     //move cursor in an appropriate place to paste the shape
     cursor1x = 0;
     cursor1y = 0;
@@ -90,11 +90,11 @@ void getUserInputPlacement() {
 //in bezier mode:  store the curve in the list
 //in photo mode: print svg on image
 void onSelectButtonRelease() {
-  if (graphicMode == 1) {
+  if (graphicMode == State.BEZIER) {
     storeBezier();
   }
 
-  if (graphicMode == 2) {
+  if (graphicMode == State.FONT) {
     if (textMode == 0) {
       textMode = 1;
     } else {
@@ -102,9 +102,9 @@ void onSelectButtonRelease() {
     }
   }
 
-  if (graphicMode == 0) {
+  if (graphicMode == State.PHOTO) {
     initiatePlacementMode = false;
-    graphicMode = 2;
+    graphicMode = State.FONT;
   }
 }
 
@@ -304,9 +304,9 @@ public void getUserInputBezier() {
 
 // events to round cursor position when the button is not pressed anymore
 void onaButtonRelease() {
-  if (graphicMode == 1) {
+  if (graphicMode == State.BEZIER) {
     activeCurvePoints[2].y = roundToGrid(int(activeCurvePoints[2].y));
-  } else if (graphicMode == 0 && initiatePlacementMode == true) {
+  } else if (graphicMode == State.PHOTO && initiatePlacementMode == true) {
     //paste the generated shape
     photo.blend(pg, 0, 0, width, height, cursor1x, cursor1y, cursor2x, cursor2y, LIGHTEST);
     initiatePlacementMode = false;
@@ -318,17 +318,17 @@ void onaButtonRelease() {
 
     //odd bug workaround
     paste = false;
-  } else if (graphicMode == 0 && initiateTextPlacement == true) {
+  } else if (graphicMode == State.PHOTO && initiateTextPlacement == true) {
 pastingTextL = true;
 
-  } else if (graphicMode == 2) {
+  } else if (graphicMode == State.FONT) {
     showGrid = !showGrid;
   }
 }
 void onyButtonRelease() {
-  if (graphicMode == 1) {
+  if (graphicMode == State.BEZIER) {
     activeCurvePoints[2].y = roundToGrid(int(activeCurvePoints[2].y));
-  } else if (graphicMode == 2) {
+  } else if (graphicMode == State.FONT) {
     textDeformMode++;
     if (textDeformMode == 4) {
       textDeformMode = 0;
@@ -336,9 +336,9 @@ void onyButtonRelease() {
   }
 }
 void onxButtonRelease() {
-  if (graphicMode == 1) {
+  if (graphicMode == State.BEZIER) {
     activeCurvePoints[2].x = roundToGrid(int(activeCurvePoints[2].x));
-  } else if (graphicMode == 2) {
+  } else if (graphicMode == State.FONT) {
     fontSelector++;
     if (fontSelector >= 5) {
       fontSelector = 0;
@@ -349,10 +349,10 @@ void onxButtonRelease() {
   }
 }
 void onbButtonRelease() {
-  if (graphicMode == 1) {
+  if (graphicMode == State.BEZIER) {
 
     activeCurvePoints[2].x = roundToGrid(int(activeCurvePoints[2].x));
-  } else if (graphicMode == 0 && initiatePlacementMode == true) {
+  } else if (graphicMode == State.PHOTO && initiatePlacementMode == true) {
     // paste the generated shape
     photo.blend(pg, 0, 0, width, height, cursor1x, cursor1y, cursor2x, cursor2y, DARKEST);
     initiatePlacementMode = false;
@@ -363,9 +363,9 @@ void onbButtonRelease() {
     cursor2y = height / 2 + 5;
     //odd bug workaround
     paste = false;
-  } else if (graphicMode == 2) {
+  } else if (graphicMode == State.FONT) {
     showFontGhost = !showFontGhost;
-  } else if (graphicMode == 0 && initiateTextPlacement == true) {
+  } else if (graphicMode == State.PHOTO && initiateTextPlacement == true) {
 pastingTextD = true;
 
   }
@@ -382,7 +382,7 @@ void onrightThumbRelease() {
 }
 
 //////////////////////////////////////////////////////////////////////
-//FONT Controls//
+//font Controls//
 //////////////////////////////////////////////////////////////////////
 
 void getFontInput() {

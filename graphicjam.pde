@@ -65,7 +65,14 @@ int fontSelector = 0;
 //Mode setup//
 //////////////////////////////////////////////////////////////////////
 
-int graphicMode = 0;
+enum State {
+    DISPLAY,
+    PASTING,
+    BEZIER,
+    PHOTO,
+    FONT
+}
+State graphicMode = State.PHOTO;
 boolean initiatePhotoMode = false;
 boolean initiateBezierMode = false;
 boolean initiatePlacementMode = false;
@@ -151,7 +158,7 @@ void setup() {
 
 void draw() {
 
-    if (graphicMode == 0) {
+    if (graphicMode == State.PHOTO) {
         image(photo, 0, 0);
         if (initiatePlacementMode == false && initiateTextPlacement == false) {
             collaborativePhoto();
@@ -197,9 +204,9 @@ void draw() {
                 paste = false;
             }
         }
-    } else if (graphicMode == 1) {
+    } else if (graphicMode == State.BEZIER) {
         collaborativeBezier();
-    } else if (graphicMode == 2) {
+    } else if (graphicMode == State.FONT) {
         collaborativeFont();
     }
 }
