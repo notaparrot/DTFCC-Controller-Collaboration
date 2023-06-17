@@ -37,7 +37,7 @@ void onStartButtonRelease() {
 
     // initiatePhotoMode = true;
     initiatePlacementMode = true;
-    graphicMode = State.FONT;
+    graphicMode = State.PASTE;
     //move cursor in an appropriate place to paste the shape
     cursor1x = 0;
     cursor1y = 0;
@@ -45,7 +45,7 @@ void onStartButtonRelease() {
     cursor2y = height;
   } else if (graphicMode == State.FONT) {
     initiateTextPlacement = true;
-    graphicMode = State.PHOTO;
+    graphicMode = State.PASTE;
     //move cursor in an appropriate place to paste the shape
     cursor1x = 0;
     cursor1y = 0;
@@ -306,7 +306,7 @@ public void getUserInputBezier() {
 void onaButtonRelease() {
   if (graphicMode == State.BEZIER) {
     activeCurvePoints[2].y = roundToGrid(int(activeCurvePoints[2].y));
-  } else if (graphicMode == State.PHOTO && initiatePlacementMode == true) {
+  } else if (graphicMode == State.PASTE && initiatePlacementMode == true) {
     //paste the generated shape
     photo.blend(pg, 0, 0, width, height, cursor1x, cursor1y, cursor2x, cursor2y, LIGHTEST);
     initiatePlacementMode = false;
@@ -318,11 +318,17 @@ void onaButtonRelease() {
 
     //odd bug workaround
     paste = false;
-  } else if (graphicMode == State.PHOTO && initiateTextPlacement == true) {
-pastingTextL = true;
+    graphicMode = State.PHOTO;
+  }
+//    else if (graphicMode == State.PHOTO && initiateTextPlacement == true) {
+// pastingTextL = true;
 
-  } else if (graphicMode == State.FONT) {
+//   }
+   else if (graphicMode == State.FONT) {
     showGrid = !showGrid;
+  }
+  else if (graphicMode == State.PASTE && initiateTextPlacement == true) {
+pastingTextL = true;
   }
 }
 void onyButtonRelease() {
@@ -352,7 +358,7 @@ void onbButtonRelease() {
   if (graphicMode == State.BEZIER) {
 
     activeCurvePoints[2].x = roundToGrid(int(activeCurvePoints[2].x));
-  } else if (graphicMode == State.PHOTO && initiatePlacementMode == true) {
+  } else if (graphicMode == State.PASTE && initiatePlacementMode == true) {
     // paste the generated shape
     photo.blend(pg, 0, 0, width, height, cursor1x, cursor1y, cursor2x, cursor2y, DARKEST);
     initiatePlacementMode = false;
@@ -363,11 +369,15 @@ void onbButtonRelease() {
     cursor2y = height / 2 + 5;
     //odd bug workaround
     paste = false;
+    graphicMode = State.PHOTO;
   } else if (graphicMode == State.FONT) {
     showFontGhost = !showFontGhost;
-  } else if (graphicMode == State.PHOTO && initiateTextPlacement == true) {
+  }
+//    else if (graphicMode == State.PHOTO && initiateTextPlacement == true) {
+// pastingTextD = true;
+//   } 
+  else if (graphicMode == State.PASTE && initiateTextPlacement == true) {
 pastingTextD = true;
-
   }
 }
 
